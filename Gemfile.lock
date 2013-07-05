@@ -1,0 +1,63 @@
+GIT
+  remote: https://github.com/aetaric/RubyMinecraft
+  revision: 290457a2530ba2ee93667474177550d46a33d982
+  specs:
+    RubyMinecraft (0.0.1)
+
+GEM
+  remote: https://www.rubygems.org/
+  specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    awesome_print (1.1.0)
+    coderay (1.0.9)
+    colorize (0.5.8)
+    diff-lcs (1.2.1)
+    file-tail (1.0.12)
+      tins (~> 0.5)
+    guard (1.6.2)
+      listen (>= 0.6.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      terminal-table (>= 1.4.3)
+      thor (>= 0.14.6)
+    guard-rspec (2.5.1)
+      guard (>= 1.1)
+      rspec (~> 2.11)
+    listen (0.7.3)
+    lumberjack (1.0.3)
+    method_source (0.8.1)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    rb-fsevent (0.9.3)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.0)
+    ruby_gntp (0.3.4)
+    slop (3.4.5)
+    terminal-table (1.4.5)
+    thor (0.18.1)
+    tins (0.8.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RubyMinecraft!
+  active_support
+  awesome_print
+  colorize
+  file-tail
+  guard-rspec
+  pry
+  rb-fsevent (~> 0.9)
+  rspec
+  ruby_gntp

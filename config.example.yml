@@ -1,0 +1,47 @@
+mcir:
+  # set this to true to get debug output.
+  # you can enable debug output at any time by passing --debug
+  debug: false
+
+  # the default instance if none is given
+  default_instance: localbukkit
+
+  # java executable (might be java or java.exe)
+  java_exe: java
+
+  # will always be used unless `skip_java_args: true` is set
+  java_args: -server
+
+instance_defaults: &default_instance
+  executable: minecraft_server.jar nogui
+  skip_java_args: false
+  java_args: -Xms1048M -Xmx2048M
+
+  # You propably won't need to edit these...
+  server_log: server.log
+  server_plist: server.properties
+
+# ==============================
+# = Define your instances here =
+# ==============================
+# You should inherit from the default instance.
+# Just look at the examples.
+instances:
+  # this one is just for rspec testing
+  rspec:
+    <<: *default_instance
+    home: "%MCIR_ROOT%/spec/server"
+
+  localbukkit:
+    <<: *default_instance
+    home: /Users/chaos/Library/Application Support/minecraft/_bukkit
+    screen_name: mcir_localbukkit # is the default
+    executable: craftbukkit.jar
+    java_args: -Xms100M -Xmx512M
+
+  geekya_main:
+    <<: *default_instance
+    home: /home/geekyamc/_main
+    screen_name: mcir_geekya_main # you get the idea?
+    executable: craftbukkit.jar
+    java_args: -Xms2048M -Xmx10240M
