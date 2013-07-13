@@ -16,6 +16,10 @@ class Mcir::Instance
       properties["rcon.port"] || 25575
     end
 
+    def server_ip
+      properties["server-ip"].presence || '127.0.0.1'
+    end
+
     # Checks if the server is online by using different checking methods
     def online? *checks
       # use lockfile per default

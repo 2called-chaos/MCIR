@@ -11,4 +11,4 @@ done
 MCLDIR="$( cd -P "$( dirname "$SOURCE" )"/.. && pwd )"
 
 # Actually run MCIR
-bundle exec ruby $MCLDIR/mcir.rb "$@"
+cd $MCLDIR && bundle exec ruby mcir.rb "$@"

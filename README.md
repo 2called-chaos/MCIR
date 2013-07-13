@@ -8,29 +8,32 @@ There isn't that much documentation yet, sorry *._.*
 
 ## Requirements
   - Ruby >= 1.9
+  - git
   - Unixoid OS (such as Ubuntu/Debian, OS X, maybe others)
   - screen command installed
   - local minecraft server(s) (minecraft, bukkit, whatever)
-  - optional: git for downloading and updating MCIR
 
 ## Setup
+  0. Do everything as the user which runs the servers except maybe the symlink in step 2.
   1. Download or clone the whole thing to where you're servers are:
       <pre>
-        cd /home/minecraft_server
-        git clone git@github.com:2called-chaos/MCIR.git
-      </pre>
-  2. Optional but recommended: Add the bin directory to your $PATH variable (google it) or create a symlink to the executable:
+        cd ~
+        git clone https://github.com/2called-chaos/MCIR.git</pre>
+  2. Optional but recommended: Add the bin directory to your $PATH variable or create a symlink to the executable:
       <pre>
-        ln -s /home/minecraft_server/MCIR/bin/mcir /usr/local/bin/mcir
-      </pre>
-  3. Copy and edit the example configuration to fit your needs and server settings.
+        echo 'export PATH="$HOME/MCIR/bin:$PATH"' >> ~/.profile && source ~/.profile
+        OR
+        ln -s /home/minecraft_server/MCIR/bin/mcir /usr/local/bin/mcir</pre>
+  3. Install the bundle
+      <pre>
+        cd ~/MCIR && bundle install --without test --deployment</pre>
+  4. Copy and edit the example configuration to fit your needs and server settings.
      Please note that there is currently no user support which means all servers need to run under the same user as MCIR does.
       <pre>
-        cd /home/minecraft_server/MCIR
+        cd ~/MCIR
         cp config.example.yml config.yml
-        nano config.yml
-      </pre>
-  4. Dig right into it! Run `mcir --help` to get a list of default options and available actions.
+        nano config.yml</pre>
+  5. Dig right into it! Run `mcir --help` to get a list of default options and available actions.
      Run `mcir <action> --help` to get a list of all the action specific options.
 
 ## Actions
