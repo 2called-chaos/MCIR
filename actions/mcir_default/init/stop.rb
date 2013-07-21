@@ -13,8 +13,8 @@ module Mcir::Action::Init
         on("-f", "--force", desc_def("Kill the screen immediately, ignores all following options", false)) { act.config[:force] = true }
         on("-e", "--ensure", desc_def("Kill the screen if the server didn't stop after timeout is reached", false)) { act.config[:ensure] = true }
         on("-t", "--timeout N", Integer, desc_def("Wait N seconds for the server to stop", 10)) {|t| act.config[:timeout] = t }
-        on("-d", "--delay N", Integer, desc_def("Wait N seconds before stopping the server if --message is given)", 15)) {|t| act.config[:delay] = t }
-        on("-m", "--message MSG", String, desc_def("Send message to server before waiting --delay", 10)) {|t| act.config[:message] = t }
+        on("-d", "--delay [N]", Integer, desc_def("Wait N seconds before stopping the server if --message is given)", 15)) {|t| act.config[:delay] = t }
+        on("-m", "--message MSG", String, desc_def("Send message to server before waiting --delay")) {|t| act.config[:message] = t }
         on("-k", "--kick [MSG]", desc_def("Kick all players before the server will shutdown", false)) {|t| act.config[:kick] = t }
       end
     end
