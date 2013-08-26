@@ -1,12 +1,17 @@
 class Mcir::Core
+  # Contain setup related stuff.
   module Setup
-    # init the logger
+    # Inits the logger instance.
+    # @note This method is considered private API, do not use it.
+    # @private
     def init_logger
       @logger = Banana::Logger.new(:mcir)
       @logger.log "Mcir #{Mcir::VERSION} started (#{Time.now})" unless ARGV.include?("--nologger")
     end
 
-    # init the configuration incl. early ARGV manipulation
+    # Inits the configuration incl. early ARGV manipulation.
+    # @note This method is considered private API, do not use it.
+    # @private
     def init_config
       @config = YAML::load_file("#{MCIR_ROOT}/config.yml")
       raise "config invalid (not a hash)" unless @config.is_a?(Hash)
@@ -23,7 +28,9 @@ class Mcir::Core
       abort msg
     end
 
-    # init option parser with default params
+    # Inits option parser with default params
+    # @note This method is considered private API, do not use it.
+    # @private
     def init_opts
       @opts = OptionParser.new do |opts|
         opts.banner = "Usage: mcir [instance] action [options]"
@@ -42,7 +49,12 @@ class Mcir::Core
       end
     end
 
-    # registers a new action
+    # Registers a new action.
+    #
+    # @param [String, Symbol] name Name of the action.
+    # @param [String, Nil] desc Description for the action (displayed in the help action overview).
+    # @param [Class] klass Class to use (Mcir::Action or subclasses of it).
+    # @param [Proc] handler Optional handler for the action.
     def action name, desc = nil, klass = Mcir::Action, &handler
       if desc.is_a?(Class)
         klass, desc = desc, ""
@@ -50,7 +62,10 @@ class Mcir::Core
       @actions[name.to_sym] = klass.new(self, name, desc, &handler)
     end
 
-    # loads and registers custom action classes
+    # Loads and registers custom action classes in the actions directory.
+    #
+    # Each .rb file in the actions directory or it's subdirectories will be automatically loaded on
+    # startup. Each class inheriting from {Mcir::Action} get's registered.
     def register_action_classes
       Dir["#{MCIR_ROOT}/actions/**/*.rb"].each { |file| require file }
 

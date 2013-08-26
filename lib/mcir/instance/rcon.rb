@@ -1,5 +1,10 @@
 class Mcir::Instance
+  # Contains rcon and query functionalities.
   module Rcon
+    # Returns the rcon handle (singleton).
+    #
+    # @param [Boolean] reconnect Make new connection if set to true.
+    # @return Rcon instance or false if something went wrong.
     def rcon reconnect = false
       @_rcon = nil if reconnect
       if !@_rcon && properties["enable-rcon"]
@@ -11,6 +16,10 @@ class Mcir::Instance
       return false
     end
 
+    # Makes a server query and returns the result.
+    #
+    # @param [Symbol] mode Query mode (simple or full)
+    # @return [Hash] Query result or false if something went wrong.
     def query mode = :simple
       if properties["enable-query"]
         if mode == :simple

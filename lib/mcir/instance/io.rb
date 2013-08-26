@@ -1,6 +1,11 @@
 class Mcir::Instance
+  # Contains IO operations for instances.
   module IO
-    # read and parse the property file
+    # Reads and parses the property file of the instance. It will attempt to make same basic type
+    # conversions. It will detect booleans and integers.
+    #
+    # @param [Boolean] reload If set to true the cache will be wiped and reloaded from disk.
+    # @return [Hash] Hash of the server properties.
     def properties reload = false
       @_properties = nil if reload
       @_properties ||= begin
@@ -24,7 +29,15 @@ class Mcir::Instance
       end
     end
 
-    # return a handle to the server logfile and optionally tail on it
+    # Returns a handle to the server logfile and optionally tail on it.
+    #
+    # @option opts [Boolean] tail (false) Tail the server log
+    # @option opts [Integer] interval (1) Tail interval
+    # @option opts [Integer] n (0) Backlog in lines
+    # @option opts [Boolean] f (false) Follow file (tail -f)
+    # @option opts [Boolean] whiny (false) Raise exceptions on EOF if set to true
+    # @option opts [String] mode ("r") File open mode
+    # @param [Proc] block Block to send to tail (only needed when tail is set to true)
     def logfile opts = {}, &block
       opts = { tail: false, interval: 1, n: 0, f: false, whiny: false, mode: "r" }.merge(opts)
       if File.exist?(logfile_path)
@@ -40,7 +53,9 @@ class Mcir::Instance
       end
     end
 
-    # check if the lockfile exists
+    # Checks whether the lockfile exists.
+    #
+    # @return [Boolean] true if the lockfile exists.
     def lockfile?
       File.exists?(lockfile_file)
     end

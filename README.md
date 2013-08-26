@@ -6,11 +6,23 @@ There are some build-in tasks to get you started (and to legitimate the "init" p
 Just take a look at the examples, they should give you a little insight of what is possible (look at the restart task).
 There isn't that much documentation yet, sorry *._.*
 
+## What it does (provide)
+
+  * A simple task based framework to build simple managing commands for your minecraft server(s).
+  * Simple, non-invasive structure.
+  * Default and example tasks to manage your server(s) and get started with building your own.
+
+## What it (currently) doesn't (provide)
+
+  * Multi user support (all instances need to run under the same user as MCIR)
+  * Multi machine support (only manages instances on the same machine)
+
 ## Requirements
-  - Ruby >= 1.9
-  - git
+  - Ruby >= 1.9.3 incl. RubyGems
+    - Bundler gem (`gem install bundler`)
+  - git (`apt-get install git` / `brew install git`)
   - Unixoid OS (such as Ubuntu/Debian, OS X, maybe others)
-  - screen command installed
+  - screen command installed (`apt-get install screen`)
   - local minecraft server(s) (minecraft, bukkit, whatever)
 
 ## Setup
