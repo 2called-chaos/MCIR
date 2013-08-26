@@ -6,6 +6,7 @@ class Mcir::Instance
     @name = name.to_s
     @config = @mcir.config["instances"][@name]
   end
+      @name = name.to_s.dup
 
   include Getters, Paths, Commands, IO, Rcon
 
