@@ -47,7 +47,7 @@ module Mcir::Action::Init
 
     def abort_if_screen_running!
       if @instance.online?(:screen)
-        @mcir.abort "Can't start ".red << @instance.name.magenta << ", already running!".red
+        @mcir.abort "Can't start ".red << "#{@instance.name}".magenta << ", already running!".red
       end
     end
   end

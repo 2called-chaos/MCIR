@@ -11,11 +11,11 @@ module Mcir::Action::Init
       @mcir.config["instances"].each do |name, _|
         instance = Mcir::Instance.new(@mcir, name)
         @mcir.logger.raw(nil, :puts)
-        @mcir.log "Showing ".yellow << instance.name.magenta << " in ".yellow << "#{instance.config["home"].ellipsisize(25)}".blue
+        @mcir.log "Showing ".yellow << "#{instance.name}".magenta << " in ".yellow << "#{instance.config["home"].ellipsisize(25)}".blue
         begin
           @mcir.dispatch_action :status, instance
         rescue
-          @mcir.warn "Failed to get status of instance " << instance.name.magenta
+          @mcir.warn "Failed to get status of instance " << "#{instance.name}".magenta
         end
       end
     end

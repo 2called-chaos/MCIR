@@ -20,7 +20,7 @@ class Mcir::Action::Inspect < Mcir::Action
   def call instance, args
     @instance = instance
     if @mcir.logger.enabled?
-      @mcir.log "Instance: ".yellow << @instance.name.magenta
+      @mcir.log "Instance: ".yellow << "#{@instance.name}".magenta
       mcir_conf if @config[:mcir]
       server_plist if @config[:plist]
     else

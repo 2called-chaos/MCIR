@@ -23,14 +23,14 @@ module Mcir::Action::Init
       @instance = instance
 
       if !@instance.online?(:screen)
-        @mcir.abort "Can't stop ".red << @instance.name.magenta << ", not running!".red
+        @mcir.abort "Can't stop ".red << "#{@instance.name}".magenta << ", not running!".red
       else
         @config[:force] ? force_shutdown : graceful_shutdown
       end
     end
 
     def force_shutdown
-      @mcir.warn "Killing screen session for ".red << @instance.name.magenta << "!".red
+      @mcir.warn "Killing screen session for ".red << "#{@instance.name}".magenta << "!".red
       @mcir.logger.log_with_print do
         @mcir.warn "Abort within 3 seconds".red
         sleep 1
@@ -79,14 +79,14 @@ module Mcir::Action::Init
             end
           end
           @mcir.log  "Instance ".green <<
-                     @instance.name.magenta <<
+                     "#{@instance.name}".magenta <<
                      " successfully stopped (".green <<
                      "#{time[:dist]}".magenta <<
                      ")!".green
           return true
         rescue Timeout::Error => e
           @mcir.warn "Instance ".red <<
-                     @instance.name.magenta <<
+                     "#{@instance.name}".magenta <<
                      " failed to stop within ".red <<
                      "#{@config[:timeout]} seconds".purple <<
                      "!".red

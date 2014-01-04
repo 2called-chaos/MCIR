@@ -31,7 +31,7 @@ class Mcir::Shell < Mcir::Action
       @mcir.log "Visit ".blue << "pryrepl.org".magenta.underline << " to get all benefits of this shell.".blue
       @mcir.log "Type ".blue << "h".magenta << " to get more help.".blue
       @mcir.log "Type ".blue << "exit".magenta << " or ".blue << "!!!".magenta << " to end the session.".blue
-      @mcir.log "Your current instance is ".blue << instance.name.magenta
+      @mcir.log "Your current instance is ".blue << "#{instance.name}".magenta
 
       # start interactive session in the scope of an action
       self.pry

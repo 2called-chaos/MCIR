@@ -16,10 +16,10 @@ module Mcir::Action::Init
 
     def call instance, args
       if !instance.online?(:screen)
-        @mcir.abort "Can't attach ".red << instance.name.magenta << ", not running!".red
+        @mcir.abort "Can't attach ".red << "#{instance.name}".magenta << ", not running!".red
       else
         if instance.screen_status == :attached
-          @mcir.abort "Can't attach ".red << instance.name.magenta << ", already attached!".red
+          @mcir.abort "Can't attach ".red << "#{instance.name}".magenta << ", already attached!".red
         else
           @mcir.log "Attaching console for ".yellow << "#{instance.name}".magenta << "...".yellow
           @mcir.log "Press ".yellow << "Ctrl-A".magenta << " + ".yellow << "Ctrl+D".magenta << " successively to detach".yellow
