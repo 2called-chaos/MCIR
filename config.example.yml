@@ -21,6 +21,9 @@ instance_defaults: &default_instance
   server_log: server.log
   server_plist: server.properties
 
+  # Change this to `end' for BungeeCord instances
+  stop_command: stop
+
 # ==============================
 # = Define your instances here =
 # ==============================

@@ -60,7 +60,7 @@ module Mcir::Action::Init
       # @todo issue save-all
 
       # send stop to server
-      @instance.screen_exec! "stop"
+      @instance.screen_exec! @instance.config["stop_command"] || "stop"
       force_shutdown if !wait_for_server_to_shutdown && @config[:ensure]
     end
 
