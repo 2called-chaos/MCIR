@@ -13,7 +13,7 @@ module Mcir::Action::Init
         @mcir.logger.raw(nil, :puts)
         @mcir.log "Showing ".yellow << instance.name.magenta
         begin
-          @mcir.dispatch_action :status
+          @mcir.dispatch_action :status, instance
         rescue
           @mcir.warn "Failed to get status of instance " << instance.name.magenta
         end
