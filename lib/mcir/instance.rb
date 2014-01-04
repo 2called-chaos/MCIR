@@ -10,6 +10,24 @@ module Mcir
       @mcir = mcir
       @name = name.to_s.dup
       @config = @mcir.config["instances"][@name]
+
+      # autocomplete configuration name
+      unless @config
+        avail_keys = @mcir.config["instances"].keys
+        @name.to_s.split(".").each do |qchunk|
+          avail_keys = avail_keys.grep(/#{Regexp.escape(qchunk)}/)
+        end
+        case avail_keys.length
+        when 1
+          @name = avail_keys.first
+          @config = @mcir.config["instances"][@name]
+          @mcir.debug "autodiscovered instance `#{@name}' from input `#{name}'"
+        when 0
+          raise ArgumentError, "instance `#{@name}' can't be resolved, does not exist (#{@mcir.config["instances"].keys})"
+        else
+          raise ArgumentError, "ambiguous instance name `#{@name}' matching #{avail_keys}"
+        end
+      end
     end
 
     include Getters, Paths, Commands, IO, Rcon
