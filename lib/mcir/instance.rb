@@ -12,7 +12,7 @@ module Mcir
       @config = @mcir.config["instances"][@name]
 
       # autocomplete configuration name
-      unless @config
+      if !@config && @name.present?
         avail_keys = @mcir.config["instances"].keys
         @name.to_s.split(".").each do |qchunk|
           avail_keys = avail_keys.grep(/#{Regexp.escape(qchunk)}/)
