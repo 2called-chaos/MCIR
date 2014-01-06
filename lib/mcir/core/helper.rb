@@ -105,8 +105,8 @@ class Mcir::Core
 
       if fa && sa
         return [sa, fa]
-      elsif fa && !sa
-        return [fa, @config["mcir"]["default_instance"]]
+      else
+        return [fa, nil]
       end
     end
 

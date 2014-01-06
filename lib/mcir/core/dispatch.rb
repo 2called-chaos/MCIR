@@ -57,7 +57,7 @@ class Mcir::Core
       @called_action, @called_instance = distinct_action_and_instance
       action = get_action(@called_action)
       @current_instance = instance = Mcir::Instance.new(self, @called_instance)
-      @logger.debug "dispatching action `#{@called_action}' on instance `#{@called_instance}'"
+      @logger.debug "dispatching action `#{@called_action}' on instance `#{@current_instance.name}'"
 
       # prepare action
       prepare_action(action)

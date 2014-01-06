@@ -3,8 +3,18 @@ mcir:
   # you can enable debug output at any time by passing --debug
   debug: false
 
-  # the default instance if none is given
+  # the default instance if none is given and none could have been guessed.
   default_instance: localbukkit
+
+  # If set to true mcir will try to autocomplete instance names.
+  # (the dot acts as filter chain)
+  #   'gm' would match 'gmain'
+  # When the input is ambiguous it will fail with a list of matched entries.
+  instance_autocomplete: true
+
+  # If set to true mcir will try to guess the instance from your current working directory.
+  # This guessing only takes place if you don't pass an instance name.
+  instance_cwd_guessing: true
 
   # java executable (might be java or java.exe)
   java_exe: java
