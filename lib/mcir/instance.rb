@@ -36,7 +36,7 @@ module Mcir
         matching_homes.uniq!
         if matching_homes.length == 1
           apply matching_homes[0][0]
-          @mcir.log "autodiscovered instance " << "#{@name}".magenta << " from working directory ".yellow <<  "#{Dir.pwd}".magenta
+          @mcir.log "autodiscovered instance " << "#{@name}".magenta << " from working directory ".yellow <<  "#{matching_homes[0][1]}".magenta
         end
       end
 
