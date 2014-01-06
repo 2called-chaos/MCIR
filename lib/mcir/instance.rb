@@ -31,7 +31,9 @@ module Mcir
       # guess instance from pwd
       if !@config && @name.blank? && @mcir.config["mcir"]["instance_cwd_guessing"]
         avail_homes = @mcir.config["instances"].map{|k,v| [k, v["home"]] }
-        matching_homes = avail_homes.select{|_,h| h.start_with?(Dir.pwd) }
+        matching_homes = avail_homes.select{|_,h| h.start_with?(ENV["PWD"]) }
+        matching_homes += avail_homes.select{|_,h| h.start_with?(ENV["OLDPWD"]) }
+        matching_homes.uniq!
         if matching_homes.length == 1
           apply matching_homes[0][0]
           @mcir.log "autodiscovered instance " << "#{@name}".magenta << " from working directory ".yellow <<  "#{Dir.pwd}".magenta
