@@ -4,7 +4,7 @@ module Mcir::Action::Init
     @desc = "shows the status of a server"
 
     def setup!
-      @config = { lock: true, screen: true, rcon: false, query: false }
+      @config = { lock: false, screen: true, rcon: false, query: false }
       register_options
     end
 
@@ -12,7 +12,7 @@ module Mcir::Action::Init
       c = act.config
       @mcir.opt do
         on("-a", "--all", desc_def("Check with every method")) { c.keys.each{|k| c[k] = true } }
-        on("-l", "--[no-]lock", desc_def("Check lockfile", true)) {|v| c[:lock] = v }
+        on("-l", "--[no-]lock", desc_def("Check lockfile", false)) {|v| c[:lock] = v }
         on("-s", "--[no-]screen", desc_def("Check screen", true)) {|v| c[:screen] = v }
         on("-r", "--[no-]rcon", desc_def("Check rcon", false)) {|v| c[:rcon] = v }
         on("-q", "--[no-]query", desc_def("Check query", false)) {|v| c[:query] = v }
