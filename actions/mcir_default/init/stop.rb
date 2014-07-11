@@ -53,7 +53,7 @@ module Mcir::Action::Init
       # kick players
       if @config.key? :kick
         @mcir.log "Kicking all players..."
-        @instance.screen_exec! "kick @a #{@config[:kick] || "Server closed"}"
+        @instance.screen_exec! "kickall #{@config[:kick] || "Server closed"}"
         sleep 3
       end
 
